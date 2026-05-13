@@ -608,7 +608,7 @@ let filt='all', sortMode=false;
 let formImgs=[], imgSortable=null;
 let vGroups=[];   // [{label, options:[{name,price}]}]
 let variantsEnabled=false;
-let cfg={currency:'USD',rate:0,updated:''}, cfgSha='';
+let cfg={currency:'USD',currency_symbol:'$',rate:0,updated:''}, cfgSha='';
 
 // ══════════════════════════════════════════════════════
 // SW + INSTALL
@@ -676,7 +676,6 @@ async function doConnect(){
     GH={user:creds.u,repo:creds.r,token:creds.t,path:'products.json'};
     loader(true,'جاري الاتصال...');
     await loadProds();
-    await loadConfig();
     localStorage.setItem('mph_k',raw);
     document.getElementById('sa').style.display='none';
     showScreen('products');
@@ -685,7 +684,7 @@ async function doConnect(){
   }catch{toast('❌ المفتاح غير صحيح','danger');localStorage.removeItem('mph_k');loader(false);}
 }
 function doLogout(){localStorage.removeItem('mph_k');location.reload();}
-async function doRefresh(){loader(true,'جاري التحديث...');await loadProds();await loadConfig();toast('✅ تم التحديث','success');}
+async function doRefresh(){loader(true,'جاري التحديث...');await loadProds();toast('✅ تم التحديث','success');}
 
 // ══════════════════════════════════════════════════════
 // CONFIG (config.json) — سعر الصرف
