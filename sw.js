@@ -1,4 +1,4 @@
-const CACHE = 'dashboard-v4';
+const CACHE = 'dashboard-v5';
 
 const SHELL = [
   './',
